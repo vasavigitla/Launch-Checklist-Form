@@ -6,9 +6,8 @@ window.addEventListener("load",function(){
        response.json().then(function(json) {
        const destination = document.getElementById("missionTarget");
    
-      //   for(let index in json){
-            let index = 0;
-         destination.innerHTML =`
+        for(let index in json){
+         destination.innerHTML += `
       <div>
                         <li>name ${json[index].name}</li>
                         <li>diameter ${json[index].diameter}</li>
@@ -18,9 +17,7 @@ window.addEventListener("load",function(){
                         <li>moons ${json[index].moons}</li>
                         <img src =${json[index].image}> </img>
                      </div>
-                     `
-                  // }
-                     
+                     `}
                   });
 
        });
