@@ -5,19 +5,21 @@ window.addEventListener("load",function(){
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
        response.json().then(function(json) {
        const destination = document.getElementById("missionTarget");
-   
-        for(let index in json){
+   // let index = 0;
+      
          destination.innerHTML += `
-      <div>
+         <h2>Mission Destination</h2>
+                        <ol>
                         <li>name ${json[index].name}</li>
                         <li>diameter ${json[index].diameter}</li>
                         <li>Star ${json[index].star}</li>
                         <li>distance ${json[index].distance}</li>
                      
                         <li>moons ${json[index].moons}</li>
-                        <img src =${json[index].image}> </img>
-                     </div>
-                     `}
+                        </ol>
+                        <img src =${json[index].image}> 
+                        
+                     `
                   });
 
        });
@@ -90,16 +92,17 @@ pilotStatus.innerHTML = `Pilot ${pilotnameInput.value} is Ready`;
 copilotStatus.innerHTML = `Copilot ${copilotnameInput.value} is Ready` ;
 
 //faultyItems.style.visibility = "hidden";
+
 // good fuel and good cargo
 
 
-if(fuellevelInput.value<=10000 && cargomassInput.value<10000){
+if(fuellevelInput.value>=10000 && cargomassInput.value<10000){
    
 faultyItems.style.visibility = "visible";
-document.getElementById("fuelStatus").innerHTML = "There is not enough fuel for the shuttle to take off"; 
+document.getElementById("fuelStatus").innerHTML = "There is enough fuel for the shuttle to take off"; 
 document.getElementById("cargoStatus").innerHTML = "There is enough mass for the shuttle to take off"; 
-document.getElementById("launchStatus").innerHTML = `Shuttle is not ready for launch`;
-launchStatus.style.color = "red";
+document.getElementById("launchStatus").innerHTML = `Shuttle is  ready to launch`;
+launchStatus.style.color = "green";
 }
 // good fuel and bad cargo
 else if(fuellevelInput.value<=10000 && cargomassInput.value>10000){
